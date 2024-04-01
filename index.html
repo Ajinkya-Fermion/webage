@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculate Age</title>
+</head>
+<body>
+
+<h2>Calculate Age</h2>
+
+<label for="dob">Date of Birth:</label>
+<input type="date" id="dob" name="dob">
+
+<button onclick="calculateAge()">Calculate Age</button>
+
+<p id="ageResult"></p>
+
+<script>
+function calculateAge() {
+  var dobInput = document.getElementById("dob").value;
+  var dob = new Date(dobInput);
+  var currentDate = new Date();
+  
+  var age = currentDate.getFullYear() - dob.getFullYear();
+  
+  // Check if birthday has occurred this year
+  if (currentDate.getMonth() < dob.getMonth() || 
+      (currentDate.getMonth() === dob.getMonth() && currentDate.getDate() < dob.getDate())) {
+    age--;
+  }
+  
+  document.getElementById("ageResult").innerHTML = "Current Age: " + age + " years";
+}
+</script>
+
+</body>
+</html>
